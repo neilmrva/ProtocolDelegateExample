@@ -29,7 +29,16 @@ class FirstViewController: UIViewController
         {
             let secondViewController = segue.destination as! SecondViewController
             secondViewController.passedText = textField.text
+            
+            secondViewController.delegate = self
         }
     }
 }
 
+extension FirstViewController: CanReceiveText
+{
+    func textReceived(textValue: String)
+    {
+        label.text = textValue
+    }
+}
